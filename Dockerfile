@@ -17,7 +17,7 @@ FROM openjdk:21-slim
 WORKDIR /app
 
 # Copy the built JAR file from the previous stage
-COPY --from=build /app/target/LibraryManagementSystem.jar app.jar
+COPY --from=build /app/target/LibraryManagementSystem-1.0-SNAPSHOT.jar app.jar
 
 # Expose the port your app runs on (Change if needed)
 EXPOSE 8080
