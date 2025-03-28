@@ -23,4 +23,6 @@ COPY --from=build /app/target/LibraryManagementSystem-1.0-SNAPSHOT.jar app.jar
 EXPOSE 8080
 
 # Run the application
-CMD ["java", "-jar", "app.jar"]
+#CMD ["java", "-jar", "app.jar"]
+CMD ["sh", "-c", "java -jar app.jar --server.port=${PORT:-8080}"]
+
