@@ -14,13 +14,17 @@ public class DatabaseConnection {
     public static Connection getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            if (connection == null || connection.isClosed()) {
-                connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            synchronized (DatabaseConnection.class) {
+                if (connection == null || connection.isClosed()) {
+                    connection = DriverManager.getConnection(URL, USER, PASSWORD);
+                    System.out.println("✅ Database connected successfully!");
+                }
             }
         } catch (SQLException e) {
+            System.err.println("❌ Database connection failed: " + e.getMessage());
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("❌ MySQL JDBC Driver not found!", e);
         }
         return connection;
     }
@@ -29,8 +33,10 @@ public class DatabaseConnection {
         try {
             if (connection != null && !connection.isClosed()) {
                 connection.close();
+                System.out.println("✅ Database connection closed.");
             }
         } catch (SQLException e) {
+            System.err.println("⚠️ Error closing connection: " + e.getMessage());
             e.printStackTrace();
         }
     }
