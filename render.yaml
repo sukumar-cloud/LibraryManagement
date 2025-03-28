@@ -1,9 +1,8 @@
 services:
   - type: web
     name: library-management
-    runtime: java
-    buildCommand: "mvn clean install"
-    startCommand: "java -jar target/LibraryManagementSystem.jar"
+    runtime: docker
+    repo: https://github.com/sukumar-cloud/LibraryManagement
     envVars:
       - key: DATABASE_URL
         value: "jdbc:mysql://your-database-host:3306/LibraryDB"
