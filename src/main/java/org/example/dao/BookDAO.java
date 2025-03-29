@@ -41,7 +41,6 @@ public class BookDAO {
         }
     }
 
-    // Retrieve all books
     public static List<Book> getAllBooks() {
         List<Book> books = new ArrayList<>();
         String query = "SELECT * FROM books";
@@ -67,7 +66,6 @@ public class BookDAO {
         return books;
     }
 
-    // Search a book by ID
     public static Book searchBookById(int bookId) {
         String query = "SELECT * FROM books WHERE id = ?";
         try (Connection connection = DatabaseConnection.getConnection();
@@ -92,7 +90,6 @@ public class BookDAO {
         return null;
     }
 
-    // Search a book by Title
     public static List<Book> searchBookByTitle(String title) {
         List<Book> books = new ArrayList<>();
         String query = "SELECT * FROM books WHERE title LIKE ?";
@@ -118,7 +115,6 @@ public class BookDAO {
         return books;
     }
 
-    // Update book details
     public static boolean updateBook(Book book) {
         String query = "UPDATE books SET title = ?, author = ?, genre = ?, availability = ? WHERE id = ?";
         try (Connection connection = DatabaseConnection.getConnection();
@@ -138,8 +134,6 @@ public class BookDAO {
             return false;
         }
     }
-
-    // Delete a book
     public static boolean deleteBook(int bookId) {
         String query = "DELETE FROM books WHERE id = ?";
         try (Connection connection = DatabaseConnection.getConnection();

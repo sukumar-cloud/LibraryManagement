@@ -6,8 +6,6 @@ import org.example.model.Book;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 public class ViewBooksGUI extends JFrame {
@@ -42,13 +40,8 @@ public class ViewBooksGUI extends JFrame {
         // Add components to frame
         add(scrollPane, BorderLayout.CENTER);
         add(panel, BorderLayout.SOUTH);
-
-        // Load books into table
         loadBooks();
-
-        // Button actions
         refreshButton.addActionListener(e -> loadBooks());
-
         updateButton.addActionListener(e -> updateAvailability());
 
         setVisible(true);

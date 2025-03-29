@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         String port = System.getenv("PORT");
         if (port == null) {
-            port = "8080"; // Default fallback
+            port = "8080";
         }
 
         System.out.println("Starting server on port: " + port);
@@ -18,7 +18,7 @@ public class Main {
             try {
                 Connection connection = DatabaseConnection.getConnection();
                 if (connection != null) {
-                    new MainMenu().setVisible(true); // Open Main Menu instead of LibraryGUI
+                    new MainMenu().setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Database connection failed!", "Error", JOptionPane.ERROR_MESSAGE);
                 }

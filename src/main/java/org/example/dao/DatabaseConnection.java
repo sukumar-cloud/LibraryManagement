@@ -21,10 +21,10 @@ public class DatabaseConnection {
                 }
             }
         } catch (SQLException e) {
-            System.err.println("❌ Database connection failed: " + e.getMessage());
+            System.err.println("Database connection failed: " + e.getMessage());
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException("❌ MySQL JDBC Driver not found!", e);
+            throw new RuntimeException(" MySQL JDBC Driver not found!", e);
         }
         return connection;
     }
@@ -36,7 +36,7 @@ public class DatabaseConnection {
                 System.out.println("✅ Database connection closed.");
             }
         } catch (SQLException e) {
-            System.err.println("⚠️ Error closing connection: " + e.getMessage());
+            System.err.println(" Error closing connection: " + e.getMessage());
             e.printStackTrace();
         }
     }
